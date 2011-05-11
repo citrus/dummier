@@ -23,20 +23,41 @@ Don't do that quite yet.
 Testing
 -------
 
-In progess...............
+To get setup for testing, clone this repo, bundle up and run rake.
 
-_(those are my assertions)_
+    git clone git://github.com/citrus/dummier.git
+    cd dummier
+    bundle install
+    rake
+
+Or do this if you want to spork:
+
+    git clone git://github.com/citrus/dummier.git
+    cd dummier
+    bundle install
+    bundle exec spork
+    
+    # in another window
+    cd back/to/dummier
+    testdrb test/**/*_test.rb
+
+Enjoy!
+
 
 
 To Do
 -----
 
-* lots.
-* and maybe get some sleep.
+* testing..
+* get migrate task to work
 
 
 Change Log
 ----------
+
+**2011/5/11**
+
+* added spork and some tests
 
 **2011/5/10**
 
