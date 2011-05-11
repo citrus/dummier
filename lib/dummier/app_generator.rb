@@ -107,13 +107,13 @@ module Dummier
         end
 
         # replace crucial templates
+        template "rails/application.rb", "config/application.rb", :force => true
         template "rails/boot.rb",        "config/boot.rb",        :force => true
-        template "rails/application.rb", "config/application.rb", :force => true    
         
         # add cucumber to database.yml
         cukes = Dir.exists?(File.join(root_path, "features"))
         if cukes
-          append_file "#{destination_root}/config/database.yml" do
+          append_file "config/database.yml" do
 %(
 cucumber:
   <<: *test
