@@ -1,0 +1,3 @@
+module Dummier
+  # Your code goes here...
+end
