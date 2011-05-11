@@ -1,6 +1,8 @@
 Dummier
 =======
 
+**Under construction**
+
 A smart gem with a dumb name; Dummier is a rails generator for automating the creation of rails testing applications. These applications usually live in test/dummy, and we see them alot.
 
 It's just not cool having so many empty, un-loved rails apps hiding away in the /test directory of all these fun gems. Let's give them some more attention by using dummier to make it exciting to generate these apps!
