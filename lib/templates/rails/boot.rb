@@ -1,5 +1,3 @@
-# lib/generators/templates/rails/boot.rb
-
 require 'rubygems'
 gemfile = File.expand_path('../../../../Gemfile', __FILE__)
 
