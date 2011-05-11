@@ -12,10 +12,15 @@ module Dummier
     
     source_root File.expand_path('../../templates', __FILE__)
     
+    def defaults
+      { :verbose => false }
+    end
+    
     def initialize(root, options={})
+      @behavior = :invoke
       @root_path = File.expand_path(root)
       @destination_stack = []
-      @options = options
+      @options = defaults.merge(options)
       self.destination_root = File.join(test_path, name)
       raise "Invalid directory!" unless Dir.exists?(@root_path)
     end
@@ -82,6 +87,7 @@ module Dummier
     end
     
     
+    
     # Runs the generator
     def run!
       
@@ -109,7 +115,7 @@ module Dummier
         # replace crucial templates
         template "rails/application.rb", "config/application.rb", :force => true
         template "rails/boot.rb",        "config/boot.rb",        :force => true
-        
+                
         # add cucumber to database.yml
         cukes = Dir.exists?(File.join(root_path, "features"))
         if cukes
