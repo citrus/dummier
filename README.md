@@ -7,7 +7,7 @@ A smart gem with a dumb name; Dummier is a rails generator for automating the cr
 
 It's just not cool having so many empty, un-loved rails apps hiding away in the /test directory of all these fun gems. Let's give them some more attention by using dummier to make it exciting to generate these apps!
 
-Once dummier is ready for action, you'll cd into your existing gem and run `dummier`.
+Once dummier is ready for action, you'll cd into your existing gem and run `bundle exec dummier`.
 
 You can create custom hooks that fire along the way by placing the appropriately named files in `your_gem/lib/dummy_hooks/hook_name.rb`.
 

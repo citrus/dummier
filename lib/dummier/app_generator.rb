@@ -75,7 +75,7 @@ module Dummier
     def fire_hook(hook_name)
       begin
         file = File.join(root_path, "lib/dummy_hooks/#{hook_name}.rb")
-        say_status "hook", hook_name, File.exists?(file) ? :cyan : :yellow
+        say_status "hook", hook_name, File.exists?(file) ? :cyan : :red
         if File.exists?(file)
           rb = File.read(file) 
           eval(rb)    
