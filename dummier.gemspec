@@ -9,8 +9,8 @@ Gem::Specification.new do |s|
   s.authors     = ["Spencer Steffen"]
   s.email       = ["spencer@citrusme.com"]
   s.homepage    = "https://github.com/citrus/dummier"
-  s.summary     = %q{Dummier is a rails generator for creating minimal rails test apps in test/dummy.}
-  s.description = %q{TODO}
+  s.summary     = %q{Dummier generates a minimal rails testing application.}
+  s.description = %q{Dummier is a rails generator for automating the creation of rails testing applications.}
 
   s.rubyforge_project = "dummier"
 

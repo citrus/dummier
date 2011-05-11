@@ -1,3 +1,5 @@
-module Dummier
-  # Your code goes here...
+require 'dummier/app_generator'
+
+module Dummier 
+  
 end
