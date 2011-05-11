@@ -27,6 +27,10 @@ module Dummier
       "dummy"
     end
     
+    def options
+      @options ||= {}
+    end
+    
     # The name of the extension to be tested
     def extension
       File.basename(root_path)
