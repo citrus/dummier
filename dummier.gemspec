@@ -22,7 +22,6 @@ Gem::Specification.new do |s|
   s.add_dependency('rails', '>= 3.0.0')
   
   s.add_development_dependency('shoulda',        '>= 2.11.3')
-  s.add_development_dependency('spork',          '>= 0.9.0.rc7')
-  s.add_development_dependency('spork-testunit', '>= 0.0.5')
+  s.add_development_dependency('sqlite3',        '>= 1.3.3')
    
 end

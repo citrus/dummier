@@ -1,5 +1,19 @@
 require_relative '../test_helper'
 
+module HookTestHelper
+  extend self
+  
+  def register(hook)
+    hooks << hook
+  end
+  
+  def hooks
+    @hooks ||= []
+  end  
+  
+end
+
+
 class DummierTest < Test::Unit::TestCase
 
   def setup
@@ -36,7 +50,7 @@ class DummierTest < Test::Unit::TestCase
     
     # make sure application template is applied
     rb = read_file('config/application.rb')
-    [ "require File.expand_path('../boot', __FILE__)", /require "dummier"/, /module Dummy/ ].each do |regex|
+    [ "require File.expand_path('../boot', __FILE__)", /require "dummy_gem"/, /module Dummy/ ].each do |regex|
       assert_match regex, rb
     end
     
@@ -46,10 +60,9 @@ class DummierTest < Test::Unit::TestCase
       assert_match regex, rb
     end    
     
-  end
-
-  context "with some hooks" do
-    # todo
+    # make sure hooks are all registered and in proper order
+    assert_equal [:before_delete, :before_app_generator, :after_app_generator, :before_migrate, :after_migrate], HookTestHelper.hooks
+    
   end
 
 end
