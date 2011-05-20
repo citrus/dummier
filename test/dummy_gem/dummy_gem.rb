@@ -1,0 +1,3 @@
+module DummyGem
+
+end
