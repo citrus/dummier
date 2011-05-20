@@ -3,7 +3,7 @@ require_relative '../test_helper'
 class DummierTest < Test::Unit::TestCase
 
   def setup
-    @root  = File.expand_path("../../../", __FILE__)
+    @root  = File.expand_path("../../dummy_gem", __FILE__)
     @dummy = File.join(@root, "test/dummy")
   end
   
