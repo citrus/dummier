@@ -9,7 +9,7 @@ The idea behind Dummier is that we don't check `test/dummy` into git, but rather
 
 Dummier is simple; just run the binary from your gem's root directory and it will generate a stripped-down & gem-dev-ready rails app in `test/dummy`. While it's doing it's thing, Dummer triggers a few hooks along the way for easy customization.
 
-To catch the hooks, just create appropriatly named files in `lib/dummy_hooks` inside your gem. See *Hooks* below for more info.
+To catch the hooks, just create appropriatly named files in `lib/dummy_hooks` inside your gem. See **Hooks** below for more info.
 
 
 Installation
