@@ -1,23 +1,62 @@
 Dummier
 =======
 
-**Under construction**
+A smart gem with a dumb name; Dummier is a rails generator for automating the creation of rails testing applications. 
 
-A smart gem with a dumb name; Dummier is a rails generator for automating the creation of rails testing applications. These applications usually live in test/dummy, and we see them alot.
+Dummier was inspired by [José Valim](https://github.com/josevalim)'s [enginex](https://github.com/josevalim/enginex) which creates a standard gem structure for you. Enginex creates a `test/dummy` app for you, but what if we want to re-create it? Or leave it out of git?
 
-It's just not cool having so many empty, un-loved rails apps hiding away in the /test directory of all these fun gems. Let's give them some more attention by using dummier to make it exciting to generate these apps!
+The idea behind Dummier is that we don't check `test/dummy` into git, but rather generate it on the fly for the gems we're developing. It just seems [DRY](http://en.wikipedia.org/wiki/Don't_repeat_yourself)'er that way.
 
-Once dummier is ready for action, you'll cd into your existing gem and run `bundle exec dummier`.
+Dummier is simple; just run the binary from your gem's root directory and it will generate a stripped-down & gem-dev-ready rails app in `test/dummy`. While it's doing it's thing, Dummer triggers a few hooks along the way for easy customization.
 
-You can create custom hooks that fire along the way by placing the appropriately named files in `your_gem/lib/dummy_hooks/hook_name.rb`.
-
-That's all for now.
+To catch the hooks, just create appropriatly named files in `lib/dummy_hooks` inside your gem. See [Hooks](#readme-hooks) below for more info.
 
 
 Installation
 ------------
 
-Don't do that quite yet.
+To install from RubyGems:
+
+    gem install dummier
+
+
+To package for development in your gemspec:
+    
+    s.add_development_dependency('dummier', '>= 0.1.0')
+    
+    
+Usage
+-----
+
+After you've installed Dummier, just cd into the gem your developing and run:
+
+    bundle exec dummier
+    
+
+<h2 id="readme-hooks">Hooks</h2>
+    
+Dummier calls the follow hooks along the way:
+
+    before_delete
+    before_app_generator
+    after_app_generator
+    before_migrate
+    after_migrate
+    
+Place appropriatly named files in `lib/dummy_hooks` and dummier will find and execute them automatically! 
+
+You can use [Rails::Generators::Actions](http://api.rubyonrails.org/classes/Rails/Generators/Actions.html) as well as [Thor::Actions](http://textmate.rubyforge.org/thor/Thor/Actions.html) in your hooks. Also, since hooks are just `eval`'d into the Dummer::AppGenerator, you have access to all of [those methods](http://rubydoc.info/gems/dummier/0.1.0/Dummier/AppGenerator) as well. 
+    
+    
+### Example:
+
+Here's a `before_migrate.rb` hook that will install [Spree Commerce](https://github.com/spree/spree) by running some rake commands before migrating the `test/dummy` database.
+
+    # lib/dummy_hooks/before_migrate.rb
+    say_status "installing", "spree_core, spree_auth and spree_sample"
+    rake "spree_core:install spree_auth:install spree_sample:install"
+    
+    
 
 
 Testing
@@ -30,33 +69,22 @@ To get setup for testing, clone this repo, bundle up and run rake.
     bundle install
     rake
 
-Or do this if you want to spork:
-
-    git clone git://github.com/citrus/dummier.git
-    cd dummier
-    bundle install
-    bundle exec spork
-    
-    # in another window
-    cd back/to/dummier
-    testdrb test/**/*_test.rb
-
 Enjoy!
 
-
-
-To Do
------
-
-* testing..
-* get migrate task to work
 
 
 Change Log
 ----------
 
+**2011/5/20**
+
+* released 0.1.0 to rubygems
+* removed spork and wrote a basic hook test
+* improved documentation
+
 **2011/5/11**
 
+* released 0.1.0.rc1 to rubygems
 * added spork and some tests
 
 **2011/5/10**

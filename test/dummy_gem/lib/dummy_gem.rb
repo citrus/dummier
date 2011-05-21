@@ -1,3 +1,3 @@
 module DummyGem
-
+  # empty!
 end

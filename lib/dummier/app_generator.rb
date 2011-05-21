@@ -2,7 +2,6 @@ require "fileutils"
 require "rails/generators"
 require "rails/generators/rails/app/app_generator"
 
-
 # Much of this generator came from enginex by José Valim
 # https://github.com/josevalim/enginex/blob/master/lib/enginex.rb
 
