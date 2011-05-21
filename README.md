@@ -33,8 +33,7 @@ After you've installed Dummier, just cd into the gem your developing and run:
     bundle exec dummier
     
 
-Hooks
------
+<h2 id="readme-hooks" name="readme-hooks" class="readme-hooks">Hooks</h2>
     
 Dummier calls the follow hooks along the way:
 
