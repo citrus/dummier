@@ -33,7 +33,8 @@ After you've installed Dummier, just cd into the gem your developing and run:
     bundle exec dummier
     
 
-<h2 id="readme-hooks" name="readme-hooks" class="readme-hooks">Hooks</h2>
+Hooks
+-----
     
 Dummier calls the follow hooks along the way:
 
@@ -42,6 +43,7 @@ Dummier calls the follow hooks along the way:
     after_app_generator
     before_migrate
     after_migrate
+    
     
 Place appropriatly named files in `lib/dummy_hooks` and dummier will find and execute them automatically! 
 
@@ -56,8 +58,6 @@ Here's a `before_migrate.rb` hook that will install [Spree Commerce](https://git
     say_status "installing", "spree_core, spree_auth and spree_sample"
     rake "spree_core:install spree_auth:install spree_sample:install"
     
-    
-
 
 Testing
 -------
@@ -70,7 +70,6 @@ To get setup for testing, clone this repo, bundle up and run rake.
     rake
 
 Enjoy!
-
 
 
 Change Log
