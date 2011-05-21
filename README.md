@@ -50,7 +50,7 @@ Place appropriatly named files in `lib/dummy_hooks` and dummier will find and ex
 You can use [Rails::Generators::Actions](http://api.rubyonrails.org/classes/Rails/Generators/Actions.html) as well as [Thor::Actions](http://textmate.rubyforge.org/thor/Thor/Actions.html) in your hooks. Also, since hooks are just `eval`'d into the Dummer::AppGenerator, you have access to all of [those methods](http://rubydoc.info/gems/dummier/0.1.0/Dummier/AppGenerator) as well. 
     
     
-### Example:
+### Simple Example
 
 Here's a `before_migrate.rb` hook that will install [Spree Commerce](https://github.com/spree/spree) by running some rake commands before migrating the `test/dummy` database.
 
@@ -58,6 +58,26 @@ Here's a `before_migrate.rb` hook that will install [Spree Commerce](https://git
     say_status "installing", "spree_core, spree_auth and spree_sample"
     rake "spree_core:install spree_auth:install spree_sample:install"
     
+    
+### More Complex Example
+
+Here's an example taken from [has_magick_title](https://github.com/citrus/has_magick_title):
+
+    # lib/dummy_hooks/after_app_generator.rb
+    run "rails g scaffold post title:string"
+    
+    gsub_file "app/models/post.rb", "end", %(
+      has_magick_title
+      
+    end)
+    
+    gsub_file "config/routes.rb", "resources :posts", %(
+      resources :posts
+      root :to => "posts#index")
+    
+    gsub_file "app/views/posts/show.html.erb", "<%= @post.title %>", %(
+      <%= magick_title_for @post %>)
+
 
 Testing
 -------
@@ -68,6 +88,7 @@ To get setup for testing, clone this repo, bundle up and run rake.
     cd dummier
     bundle install
     rake
+
 
 Enjoy!
 
