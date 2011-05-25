@@ -19,6 +19,9 @@ To install from RubyGems:
 
     gem install dummier
 
+To install with bundler:
+
+    gem 'dummier', '>= 0.1.0'
 
 To package for development in your gemspec:
     
@@ -28,7 +31,11 @@ To package for development in your gemspec:
 Usage
 -----
 
-After you've installed Dummier, just cd into the gem your developing and run:
+After you've installed Dummier, just `cd` into the gem your developing and run the binary:
+
+    dummier
+    
+If you're in a gem that uses bundler, you may have to run the binary with `bundle exec`: 
 
     bundle exec dummier
     
@@ -36,7 +43,7 @@ After you've installed Dummier, just cd into the gem your developing and run:
 Hooks
 -----
     
-Dummier calls the follow hooks along the way:
+Dummier calls the following hooks along the way:
 
     before_delete
     before_app_generator
