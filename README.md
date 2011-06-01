@@ -54,7 +54,7 @@ Dummier calls the following hooks along the way:
     
 Place appropriatly named files in `lib/dummy_hooks` and dummier will find and execute them automatically! 
 
-You can use [Rails::Generators::Actions](http://api.rubyonrails.org/classes/Rails/Generators/Actions.html) as well as [Thor::Actions](http://textmate.rubyforge.org/thor/Thor/Actions.html) in your hooks. Also, since hooks are just `eval`'d into the Dummer::AppGenerator, you have access to all of [those methods](http://rubydoc.info/gems/dummier/0.1.0/Dummier/AppGenerator) as well. 
+You can use [Rails::Generators::Actions](http://api.rubyonrails.org/classes/Rails/Generators/Actions.html) as well as [Thor::Actions](http://textmate.rubyforge.org/thor/Thor/Actions.html) in your hooks. Also, since hooks are just `eval`'d into the [Dummer::AppGenerator](http://rubydoc.info/gems/dummier/0.1.0/Dummier/AppGenerator), you have access to all of [those methods](http://rubydoc.info/gems/dummier/0.1.0/Dummier/AppGenerator) as well. 
     
     
 ### Simple Example
@@ -103,15 +103,17 @@ Enjoy!
 Change Log
 ----------
 
-**2011/5/20**
+**0.1.1 - 2011/6/1**
 
-* released 0.1.0 to rubygems
+* added your gem's `lib/dummy_hooks/templates` folder into the generator's `source_paths`
+
+**0.1.0 - 2011/5/20**
+
 * removed spork and wrote a basic hook test
 * improved documentation
 
-**2011/5/11**
+**0.1.0.rc1 - 2011/5/11**
 
-* released 0.1.0.rc1 to rubygems
 * added spork and some tests
 
 **2011/5/10**

@@ -36,8 +36,14 @@ class DummierTest < Test::Unit::TestCase
     FileUtils.rm_r(@dummy) if File.exists?(@dummy)
     assert !File.exists?(@dummy)
         
-    # run generator
-    Dummier::AppGenerator.new(@root).run!
+    # create a generator
+    @generator = Dummier::AppGenerator.new(@root)
+
+    # make sure our gem's dummy_hooks/templates folder is accessible
+    assert @generator.source_paths.include?(File.join(@root, "lib/dummy_hooks/templates"))
+    
+    # run the generator
+    @generator.run!
 
     # make sure the dummy is created
     assert File.exists?(@dummy)
