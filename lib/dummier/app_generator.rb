@@ -20,7 +20,7 @@ module Dummier
       @root_path = File.expand_path(root)
       @destination_stack = []
       @options = defaults.merge(options)
-      self.source_paths << File.join(root_path, "lib", "dummy_hooks", "templates")      
+      self.source_paths << File.join(root_path, "test", "dummy_hooks", "templates")      
       self.destination_root = File.join(test_path, name)
       raise "Invalid directory!" unless Dir.exists?(@root_path)
     end
@@ -74,7 +74,7 @@ module Dummier
     # store hooks in your_extension/lib/dummy_hooks
     def fire_hook(hook_name)
       begin
-        file = File.join(root_path, "lib/dummy_hooks/#{hook_name}.rb")
+        file = File.join(root_path, "test/dummy_hooks/#{hook_name}.rb")
         say_status "hook", hook_name, File.exists?(file) ? :cyan : :red
         if File.exists?(file)
           rb = File.read(file) 

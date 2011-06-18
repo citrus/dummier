@@ -9,7 +9,7 @@ The idea behind Dummier is that we don't check `test/dummy` into git, but rather
 
 Dummier is simple; just run the binary from your gem's root directory and it will generate a stripped-down & gem-dev-ready rails app in `test/dummy`. While it's doing it's thing, Dummer triggers a few hooks along the way for easy customization.
 
-To catch the hooks, just create appropriatly named files in `lib/dummy_hooks` inside your gem. See **Hooks** below for more info.
+To catch the hooks, just create appropriatly named files in `test/dummy_hooks` inside your gem. See **Hooks** below for more info.
 
 
 Installation
@@ -52,7 +52,7 @@ Dummier calls the following hooks along the way:
     after_migrate
     
     
-Place appropriatly named files in `lib/dummy_hooks` and dummier will find and execute them automatically! 
+Place appropriatly named files in `test/dummy_hooks` and dummier will find and execute them automatically! 
 
 You can use [Rails::Generators::Actions](http://api.rubyonrails.org/classes/Rails/Generators/Actions.html) as well as [Thor::Actions](http://textmate.rubyforge.org/thor/Thor/Actions.html) in your hooks. Also, since hooks are just `eval`'d into the [Dummer::AppGenerator](http://rubydoc.info/gems/dummier/0.1.0/Dummier/AppGenerator), you have access to all of [those methods](http://rubydoc.info/gems/dummier/0.1.0/Dummier/AppGenerator) as well. 
     
@@ -61,7 +61,7 @@ You can use [Rails::Generators::Actions](http://api.rubyonrails.org/classes/Rail
 
 Here's a `before_migrate.rb` hook that will install [Spree Commerce](https://github.com/spree/spree) by running some rake commands before migrating the `test/dummy` database.
 
-    # lib/dummy_hooks/before_migrate.rb
+    # test/dummy_hooks/before_migrate.rb
     say_status "installing", "spree_core, spree_auth and spree_sample"
     rake "spree_core:install spree_auth:install spree_sample:install"
     
@@ -70,7 +70,7 @@ Here's a `before_migrate.rb` hook that will install [Spree Commerce](https://git
 
 Here's an example taken from [has_magick_title](https://github.com/citrus/has_magick_title):
 
-    # lib/dummy_hooks/after_app_generator.rb
+    # test/dummy_hooks/after_app_generator.rb
     run "rails g scaffold post title:string"
     
     gsub_file "app/models/post.rb", "end", %(
@@ -103,18 +103,27 @@ Enjoy!
 Change Log
 ----------
 
+
+**0.2.0 - 2011/6/18**
+
+* moved the dummy_hooks to your test folder rather than in lib. makes more sense that way.
+
+
 **0.1.1 - 2011/6/1**
 
-* added your gem's `lib/dummy_hooks/templates` folder into the generator's `source_paths`
+* added your gem's `test/dummy_hooks/templates` folder into the generator's `source_paths`
+
 
 **0.1.0 - 2011/5/20**
 
 * removed spork and wrote a basic hook test
 * improved documentation
 
+
 **0.1.0.rc1 - 2011/5/11**
 
 * added spork and some tests
+
 
 **2011/5/10**
 

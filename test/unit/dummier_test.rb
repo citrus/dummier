@@ -40,7 +40,7 @@ class DummierTest < Test::Unit::TestCase
     @generator = Dummier::AppGenerator.new(@root)
 
     # make sure our gem's dummy_hooks/templates folder is accessible
-    assert @generator.source_paths.include?(File.join(@root, "lib/dummy_hooks/templates"))
+    assert @generator.source_paths.include?(File.join(@root, "test/dummy_hooks/templates"))
     
     # run the generator
     @generator.run!
