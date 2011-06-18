@@ -21,11 +21,11 @@ To install from RubyGems:
 
 To install with bundler:
 
-    gem 'dummier', '>= 0.1.0'
+    gem 'dummier', '>= 0.2.0'
 
 To package for development in your gemspec:
     
-    s.add_development_dependency('dummier', '>= 0.1.0')
+    s.add_development_dependency('dummier', '>= 0.2.0')
     
     
 Usage
