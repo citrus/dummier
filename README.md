@@ -9,7 +9,7 @@ The idea behind Dummier is that we don't check `test/dummy` into git, but rather
 
 Dummier is simple; just run the binary from your gem's root directory and it will generate a stripped-down & gem-dev-ready rails app in `test/dummy`. While it's doing it's thing, Dummer triggers a few hooks along the way for easy customization.
 
-To catch the hooks, just create appropriatly named files in `test/dummy_hooks` inside your gem. See **Hooks** below for more info.
+To catch the hooks, just create appropriately named files in `test/dummy_hooks` inside your gem. See **Hooks** below for more info.
 
 
 Installation
@@ -52,7 +52,7 @@ Dummier calls the following hooks along the way:
     after_migrate
     
     
-Place appropriatly named files in `test/dummy_hooks` and dummier will find and execute them automatically! 
+Place appropriately named files in `test/dummy_hooks` and dummier will find and execute them automatically! 
 
 You can use [Rails::Generators::Actions](http://api.rubyonrails.org/classes/Rails/Generators/Actions.html) as well as [Thor::Actions](http://textmate.rubyforge.org/thor/Thor/Actions.html) in your hooks. Also, since hooks are just `eval`'d into the [Dummer::AppGenerator](http://rubydoc.info/gems/dummier/0.1.0/Dummier/AppGenerator), you have access to all of [those methods](http://rubydoc.info/gems/dummier/0.1.0/Dummier/AppGenerator) as well. 
     
