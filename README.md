@@ -21,11 +21,11 @@ To install from RubyGems:
 
 To install with bundler:
 
-    gem 'dummier', '>= 0.2.1'
+    gem 'dummier', '>= 0.2.2'
 
 To package for development in your gemspec:
     
-    s.add_development_dependency('dummier', '>= 0.2.1')
+    s.add_development_dependency('dummier', '>= 0.2.2')
     
     
 Usage
@@ -54,7 +54,7 @@ Dummier calls the following hooks along the way:
     
 Place appropriately named files ) in `test/dummy_hooks` and dummier will find and execute them automatically! 
 
-You can use [Rails::Generators::Actions](http://api.rubyonrails.org/classes/Rails/Generators/Actions.html) as well as [Thor::Actions](http://textmate.rubyforge.org/thor/Thor/Actions.html) in your hooks. Also, since hooks are just `eval`'d into the [Dummer::AppGenerator](http://rubydoc.info/gems/dummier/0.2.1/Dummier/AppGenerator), you have access to all of [those methods](http://rubydoc.info/gems/dummier/0.2.1/Dummier/AppGenerator) as well. 
+You can use [Rails::Generators::Actions](http://api.rubyonrails.org/classes/Rails/Generators/Actions.html) as well as [Thor::Actions](http://textmate.rubyforge.org/thor/Thor/Actions.html) in your hooks. Also, since hooks are just `eval`'d into the [Dummer::AppGenerator](http://rubydoc.info/gems/dummier/0.2.2/Dummier/AppGenerator), you have access to all of [those methods](http://rubydoc.info/gems/dummier/0.2.2/Dummier/AppGenerator) as well. 
     
     
 ### Simple Example
@@ -104,6 +104,12 @@ Change Log
 ----------
 
 
+**0.2.2 - 2011/8/31**
+
+* added to travis-ci.org
+* fixed ruby 1.8.7, rbx and ree compatibility
+
+
 **0.2.1 - 2011/8/31**
 
 * merged GH#1 - Thanks @holdensmagicalunicorn
@@ -120,13 +126,13 @@ Change Log
 * added your gem's `test/dummy_hooks/templates` folder into the generator's `source_paths`
 
 
-**0.2.1 - 2011/5/20**
+**0.1.0 - 2011/5/20**
 
 * removed spork and wrote a basic hook test
 * improved documentation
 
 
-**0.2.1.rc1 - 2011/5/11**
+**0.1.0.rc1 - 2011/5/11**
 
 * added spork and some tests
 
