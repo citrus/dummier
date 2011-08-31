@@ -22,7 +22,7 @@ module Dummier
       @options = defaults.merge(options)
       self.source_paths << File.join(root_path, "test", "dummy_hooks", "templates")      
       self.destination_root = File.join(test_path, name)
-      raise "Invalid directory!" unless Dir.exists?(@root_path)
+      raise "Invalid directory!" unless File.directory?(@root_path)
     end
     
     # The name of the rails application
@@ -117,7 +117,7 @@ module Dummier
         template "rails/boot.rb",        "config/boot.rb",        :force => true
                 
         # add cucumber to database.yml
-        cukes = Dir.exists?(File.join(root_path, "features"))
+        cukes = File.directory?(File.join(root_path, "features"))
         if cukes
           append_file "config/database.yml" do
 %(
