@@ -21,11 +21,11 @@ To install from RubyGems:
 
 To install with bundler:
 
-    gem 'dummier', '>= 0.2.2'
+    gem 'dummier', '>= 0.2.3'
 
 To package for development in your gemspec:
     
-    s.add_development_dependency('dummier', '>= 0.2.2')
+    s.add_development_dependency('dummier', '>= 0.2.3')
     
     
 Usage
@@ -102,6 +102,12 @@ Enjoy!
 
 Change Log
 ----------
+
+
+**0.2.3 - 2011/9/6**
+
+* refactored AppGenerator#run!
+* new app generator tests
 
 
 **0.2.2 - 2011/8/31**
