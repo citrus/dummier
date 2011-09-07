@@ -1,5 +1,4 @@
-# Dummier [![Build Status](https://travis-ci.org/citrus/dummier.png)](http://travis-ci.org/citrus/dummier)
-
+# Dummier [![Build Status](https://secure.travis-ci.org/citrus/dummier.png)](http://travis-ci.org/citrus/dummier)
 
 A smart gem with a dumb name; Dummier is a rails generator for automating the creation of rails testing applications. 
 
@@ -21,11 +20,11 @@ To install from RubyGems:
 
 To install with bundler:
 
-    gem 'dummier', '>= 0.2.3'
+    gem 'dummier', '>= 0.2.4'
 
 To package for development in your gemspec:
     
-    s.add_development_dependency('dummier', '>= 0.2.3')
+    s.add_development_dependency('dummier', '>= 0.2.4')
     
     
 Usage
@@ -104,6 +103,11 @@ Change Log
 ----------
 
 
+**0.2.4 - 2011/9/7**
+
+* fixed travis ci build image path (thanks @fritzek)
+
+
 **0.2.3 - 2011/9/6**
 
 * refactored AppGenerator#run!
@@ -152,6 +156,7 @@ Contributors
 ------------
 
 - Spencer Steffen ([@citrus](https://github.com/citrus))
+- Fritz Thielemann ([@fritzek](https://github.com/fritzek))
 - [@holdensmagicalunicorn](https://github.com/holdensmagicalunicorn)
 
 
