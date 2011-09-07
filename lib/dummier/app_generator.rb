@@ -11,6 +11,7 @@ module Dummier
     
     source_root File.expand_path('../../templates', __FILE__)
     
+    # Default generator options
     def defaults
       { :verbose => false }
     end
@@ -69,72 +70,90 @@ module Dummier
     end
     alias :store_application_definition! :application_definition
     
-    # loads a hook file and evalutes its contents. 
+    # Loads a hook file and evalutes its contents. 
     # rescues any exceptions and logs their message.
-    # store hooks in your_extension/lib/dummy_hooks
+    # Store hooks in gem_root/test/dummy_hooks
     def fire_hook(hook_name)
       begin
         file = File.join(root_path, "test/dummy_hooks/#{hook_name}.rb")
         say_status "hook", hook_name, File.exists?(file) ? :cyan : :red
-        if File.exists?(file)
-          rb = File.read(file) 
-          eval(rb)    
-        end
+        eval File.read(file) if File.exists?(file)
       rescue Exception => e
         say_status "failed", "#{hook_name} raised an exception", :red
         say e.message.strip + "\n", :red
-      end        
+      end
     end
-    
-    
     
     # Runs the generator
     def run!
-      
       fire_hook :before_delete
-      
-      # remove existing test app 
-      FileUtils.rm_r(destination_path) if File.directory?(destination_path)
-
+      remove_existing_dummy
       fire_hook :before_app_generator
-        
-      # run the base app generator
-      Rails::Generators::AppGenerator.start([destination_path])
-      
+      run_base_generator
       fire_hook :after_app_generator
-      
       inside destination_path do
-                
-        # remove unnecessary files    
+        remove_unnecessary_files
+        replace_boot_templates
+        add_cucumber_support if has_features?
+        fire_hook :before_migrate
+        run_migration
+        fire_hook :after_migrate
+      end
+    end
+    
+    private
+      
+      # Removes existing test app 
+      def remove_existing_dummy
+        FileUtils.rm_r(destination_path) if File.directory?(destination_path)
+      end
+      
+      # Runs the base app generator
+      def run_base_generator
+        Rails::Generators::AppGenerator.start([destination_path])
+      end
+      
+      # Removes unnecessary files from test/dummy
+      def remove_unnecessary_files
         files = %w(public/index.html public/images/rails.png Gemfile README doc test vendor)
         files.each do |file|
           say_status "delete", file
           FileUtils.rm_r(file) if File.exists?(file)
         end
+      end
 
-        # replace crucial templates
+      # Replaces application.rb and boot.rb with dummier's templates      
+      def replace_boot_templates
         template "rails/application.rb", "config/application.rb", :force => true
-        template "rails/boot.rb",        "config/boot.rb",        :force => true
-                
-        # add cucumber to database.yml
-        cukes = File.directory?(File.join(root_path, "features"))
-        if cukes
+        template "rails/boot.rb",        "config/boot.rb",        :force => true       
+      end
+      
+      # Add cucumber config to database.yml
+      def add_cucumber_support   
+        unless File.read(File.join(destination_path, "config/database.yml")) =~ /cucumber/
+          gsub_file   "config/database.yml", "test:", "test: &test"
           append_file "config/database.yml" do
 %(
 cucumber:
   <<: *test
-)
+)         
           end
         end
-        
-        fire_hook :before_migrate
-                
-        rake("db:migrate", :env => "test")
-        
-        fire_hook :after_migrate
-        
-      end  
+        env = "config/environments/cucumber.rb"
+        unless File.exists?(File.join(destination_path, env))
+          FileUtils.cp(File.join(destination_path, "config/environments/test.rb"), env)
+        end
+      end
       
-    end
+      # Runs db:migrate on the test database
+      def run_migration
+        rake("db:migrate", :env => "test")
+      end
+      
+      # Checks for ./features within the gem's root path
+      def has_features?
+        File.directory?(File.join(root_path, "features"))  
+      end
+    
   end
 end
