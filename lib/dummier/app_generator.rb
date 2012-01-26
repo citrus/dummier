@@ -21,7 +21,7 @@ module Dummier
       @root_path = File.expand_path(root)
       @destination_stack = []
       @options = defaults.merge(options)
-      self.source_paths << File.join(root_path, "test", "dummy_hooks", "templates")      
+      self.source_paths << File.join(root_path, "test/dummy_hooks/templates")
       self.destination_root = File.join(test_path, name)
       raise "Invalid directory!" unless File.directory?(@root_path)
     end
