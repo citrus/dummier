@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class DummierTest < Test::Unit::TestCase
+class DummierTest < MiniTest::Should::TestCase
 
   def setup
     @root = File.expand_path("../../../", __FILE__)

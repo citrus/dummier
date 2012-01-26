@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class AppGeneratorTest < Test::Unit::TestCase
+class AppGeneratorTest < MiniTest::Should::TestCase
 
   def setup
     @root  = File.expand_path("../../dummy_gem", __FILE__)

@@ -3,6 +3,7 @@ $:.push File.expand_path("../lib", __FILE__)
 require "dummier/version"
 
 Gem::Specification.new do |s|
+
   s.name        = "dummier"
   s.version     = Dummier::VERSION
   s.platform    = Gem::Platform::RUBY
@@ -21,7 +22,8 @@ Gem::Specification.new do |s|
   
   s.add_dependency('rails', '>= 3.0.0')
   
-  s.add_development_dependency('shoulda',        '>= 2.11.3')
-  s.add_development_dependency('sqlite3',        '>= 1.3.3')
-   
+  s.add_development_dependency('minitest',        '>= 2.0.0')
+  s.add_development_dependency('minitest_should', '>= 0.3.1')
+  s.add_development_dependency('sqlite3',         '>= 1.3.3')
+  
 end
