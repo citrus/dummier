@@ -112,10 +112,13 @@ class AppGeneratorTest < MiniTest::Should::TestCase
     end
     
     should "error and exit if a hook throws an exception" do
+      # ensure exception is raised
       assert_raises Dummier::HookException do
         capture(:stdout) { @generator.run! }
       end
-    end      
+      # ensure the generator didn't make it any farther
+      assert HookTestHelper.hooks.empty?
+    end
     
   end
   

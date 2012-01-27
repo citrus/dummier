@@ -1,1 +1,1 @@
-raise Exception, "Before App Generator"
+HookTestHelper.register :before_app_generator
