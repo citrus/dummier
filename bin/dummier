@@ -4,6 +4,6 @@ $:.unshift File.expand_path("../../lib", __FILE__)
 require 'dummier'
 
 dir = (ARGV.shift || `pwd`).strip
-puts "Getting dumb in #{dir.inspect}"
+puts "Running dummier from #{dir.inspect}"
 
 Dummier::AppGenerator.new(dir).run!
