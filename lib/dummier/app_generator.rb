@@ -80,7 +80,10 @@ module Dummier
         eval File.read(file) if File.exists?(file)
       rescue Exception => e
         say_status "failed", "#{hook_name} raised an exception", :red
+        say "*" * 60, :red
         say e.message.strip + "\n", :red
+        say e.backtrace.join("\n"), :red
+        raise ::Dummier::HookException, "Quitting, #{hook_name} raised an exception."        
       end
     end
     

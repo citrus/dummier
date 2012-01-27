@@ -3,4 +3,6 @@ Bundler.require(:default, :test)
 require 'minitest/autorun'
 require 'minitest/should'
 require 'fileutils'
-require File.expand_path('../support/hook_test_helper', __FILE__)
+
+require 'support/test_case'
+require 'support/hook_test_helper'

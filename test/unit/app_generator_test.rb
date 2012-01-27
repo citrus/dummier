@@ -34,7 +34,7 @@ class AppGeneratorTest < MiniTest::Should::TestCase
     context "when run" do
       
       setup do
-        @generator.run!    
+        capture(:stdout) { @generator.run! }
       end
       
       should "create test/dummy and apply proper templates" do
@@ -70,7 +70,7 @@ class AppGeneratorTest < MiniTest::Should::TestCase
       setup do
         @features = File.join(@root, "features")
         FileUtils.mkdir(@features)
-        @generator.run!
+        capture(:stdout) { @generator.run! }
       end
       
       teardown do
@@ -90,7 +90,33 @@ class AppGeneratorTest < MiniTest::Should::TestCase
       end
       
     end
-
+  
+  end
+    
+  context "A doomed to fail app generator" do
+  
+    setup do
+      # create a failed destiny
+      @hooks = File.join(@root, "test/dummy_hooks")
+      @tmp   = File.join(@root, "test/tmp_dummy_hooks")
+      @err   = File.join(@root, "test/erroneous_dummy_hooks")
+      FileUtils.mv @hooks, @tmp
+      FileUtils.mv @err, @hooks
+      @generator = Dummier::AppGenerator.new(@root)
+    end
+    
+    teardown do
+      # revert to sanity
+      FileUtils.mv @hooks, @err
+      FileUtils.mv @tmp, @hooks
+    end
+    
+    should "error and exit if a hook throws an exception" do
+      assert_raises Dummier::HookException do
+        capture(:stdout) { @generator.run! }
+      end
+    end      
+    
   end
   
 end
