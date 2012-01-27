@@ -23,14 +23,14 @@ gem install dummier
 
 To install with bundler:
 
-```bash
+```ruby
 gem 'dummier', '>= 0.3.0'
 ```
 
 
 To package for development in your gemspec:
 
-```bash    
+```ruby    
 s.add_development_dependency('dummier', '>= 0.3.0')
 ```
     
@@ -56,18 +56,16 @@ bundle exec dummier
 Hooks
 ------------------------------------------------------------------------------
     
-Dummier calls the following hooks along the way:
+Dummier calls the following hooks along the way, in this order:
 
-```bash
-before_delete
-before_app_generator
-after_app_generator
-before_migrate
-after_migrate
-```    
+1. before_delete
+2. before_app_generator
+3. after_app_generator
+4. before_migrate
+5. after_migrate
 
  
-Place appropriately named files ) in `test/dummy_hooks` and dummier will find and execute them automatically! 
+Place appropriately named files in `test/dummy_hooks` and dummier will find and execute them automatically! 
 
 You can use [Rails::Generators::Actions](http://api.rubyonrails.org/classes/Rails/Generators/Actions.html) as well as [Thor::Actions](http://textmate.rubyforge.org/thor/Thor/Actions.html) in your hooks. Also, since hooks are just `eval`'d into the [Dummer::AppGenerator](http://rubydoc.info/gems/dummier/0.3.0/Dummier/AppGenerator), you have access to all of [those methods](http://rubydoc.info/gems/dummier/0.3.0/Dummier/AppGenerator) as well. 
     
