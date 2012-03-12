@@ -68,7 +68,6 @@ module Dummier
         contents[(contents.index("module Dummy"))..-1]
       end
     end
-    alias :store_application_definition! :application_definition
     
     # Loads a hook file and evalutes its contents. 
     # rescues any exceptions and logs their message.
