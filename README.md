@@ -24,14 +24,14 @@ gem install dummier
 To install with bundler:
 
 ```ruby
-gem 'dummier', '>= 0.3.1'
+gem 'dummier', '>= 0.3.2'
 ```
 
 
 To package for development in your gemspec:
 
 ```ruby    
-s.add_development_dependency('dummier', '>= 0.3.1')
+s.add_development_dependency('dummier', '>= 0.3.2')
 ```
     
     
@@ -119,6 +119,11 @@ Enjoy!
 ------------------------------------------------------------------------------
 Change Log
 ------------------------------------------------------------------------------
+
+**0.3.2 - 2012/3/12**
+
+* revert to using rake "db:migrate", :env => "test" for running migrations
+
 
 **0.3.1 - 2012/3/12**
 
