@@ -24,14 +24,14 @@ gem install dummier
 To install with bundler:
 
 ```ruby
-gem 'dummier', '>= 0.3.0'
+gem 'dummier', '>= 0.3.1'
 ```
 
 
 To package for development in your gemspec:
 
 ```ruby    
-s.add_development_dependency('dummier', '>= 0.3.0')
+s.add_development_dependency('dummier', '>= 0.3.1')
 ```
     
     
@@ -40,12 +40,6 @@ Usage
 ------------------------------------------------------------------------------
 
 After you've installed Dummier, just `cd` into the gem your developing and run the binary:
-
-```bash
-dummier
-```
-    
-If you're in a gem that uses bundler, you may have to run the binary with `bundle exec`: 
 
 ```bash
 bundle exec dummier
@@ -111,10 +105,12 @@ Testing
 
 To get setup for testing, clone this repo, bundle up and run rake.
 
-    git clone git://github.com/citrus/dummier.git
-    cd dummier
-    bundle install
-    rake
+```bash
+git clone git://github.com/citrus/dummier.git
+cd dummier
+bundle install
+bundle exec rake
+```
 
 
 Enjoy!
@@ -123,6 +119,13 @@ Enjoy!
 ------------------------------------------------------------------------------
 Change Log
 ------------------------------------------------------------------------------
+
+**0.3.1 - 2012/3/12**
+
+* use bundle exec when running rake db:migrate
+* better gem dependency defintions
+* use rescue StandardError vs rescue Exception
+
 
 **0.3.0 - 2012/1/26**
 
@@ -191,4 +194,4 @@ Contributors
 License
 ------------------------------------------------------------------------------
 
-Copyright (c) 2011 Spencer Steffen and Citrus, released under the New BSD License All rights reserved.
+Copyright (c) 2011 - 2012 Spencer Steffen and Citrus, released under the New BSD License All rights reserved.
