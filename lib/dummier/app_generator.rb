@@ -150,7 +150,7 @@ cucumber:
       
       # Runs db:migrate on the test database
       def run_migration
-        rake("db:migrate", :env => "test")
+        run "RAILS_ENV=test bundle exec rake db:migrate"
       end
       
       # Checks for ./features within the gem's root path
