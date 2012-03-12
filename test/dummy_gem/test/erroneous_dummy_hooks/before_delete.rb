@@ -1,1 +1,1 @@
-raise Exception, "Before Delete"
+raise StandardError, "Before Delete"

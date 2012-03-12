@@ -78,7 +78,7 @@ module Dummier
         file = File.join(root_path, "test/dummy_hooks/#{hook_name}.rb")
         say_status "hook", hook_name, File.exists?(file) ? :cyan : :red
         eval File.read(file) if File.exists?(file)
-      rescue Exception => e
+      rescue => e
         say_status "failed", "#{hook_name} raised an exception", :red
         say "*" * 60, :red
         say e.message.strip + "\n", :red
