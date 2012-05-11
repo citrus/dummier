@@ -1,8 +1,8 @@
 require 'dummier/app_generator'
 require 'dummier/version'
 
-module Dummier 
-  
+module Dummier
+
   class HookException < Exception; end
-    
+
 end

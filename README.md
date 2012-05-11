@@ -1,6 +1,6 @@
 # Dummier [![Build Status](https://secure.travis-ci.org/citrus/dummier.png)](http://travis-ci.org/citrus/dummier)
 
-A smart gem with a dumb name; Dummier is a rails generator for automating the creation of rails testing applications. 
+A smart gem with a dumb name; Dummier is a rails generator for automating the creation of rails testing applications.
 
 Dummier was inspired by [José Valim](https://github.com/josevalim)'s [enginex](https://github.com/josevalim/enginex) which creates a standard gem structure for you. Enginex creates a `test/dummy` app for you, but what if we want to re-create it? Or leave it out of git?
 
@@ -30,11 +30,11 @@ gem 'dummier', '>= 0.3.2'
 
 To package for development in your gemspec:
 
-```ruby    
+```ruby
 s.add_development_dependency('dummier', '>= 0.3.2')
 ```
-    
-    
+
+
 ------------------------------------------------------------------------------
 Usage
 ------------------------------------------------------------------------------
@@ -49,7 +49,7 @@ bundle exec dummier
 ------------------------------------------------------------------------------
 Hooks
 ------------------------------------------------------------------------------
-    
+
 Dummier calls the following hooks along the way, in this order:
 
 1. before_delete
@@ -58,14 +58,14 @@ Dummier calls the following hooks along the way, in this order:
 4. before_migrate
 5. after_migrate
 
- 
-Place appropriately named files in `test/dummy_hooks` and dummier will find and execute them automatically! 
 
-You can use [Rails::Generators::Actions](http://api.rubyonrails.org/classes/Rails/Generators/Actions.html) as well as [Thor::Actions](http://textmate.rubyforge.org/thor/Thor/Actions.html) in your hooks. Also, since hooks are just `eval`'d into the [Dummer::AppGenerator](http://rubydoc.info/gems/dummier/0.3.0/Dummier/AppGenerator), you have access to all of [those methods](http://rubydoc.info/gems/dummier/0.3.0/Dummier/AppGenerator) as well. 
-    
-If a hook throws an error, Dummier will raise a `Dummier::HookException` and exit immediately. 
+Place appropriately named files in `test/dummy_hooks` and dummier will find and execute them automatically!
 
-    
+You can use [Rails::Generators::Actions](http://api.rubyonrails.org/classes/Rails/Generators/Actions.html) as well as [Thor::Actions](http://textmate.rubyforge.org/thor/Thor/Actions.html) in your hooks. Also, since hooks are just `eval`'d into the [Dummer::AppGenerator](http://rubydoc.info/gems/dummier/0.3.0/Dummier/AppGenerator), you have access to all of [those methods](http://rubydoc.info/gems/dummier/0.3.0/Dummier/AppGenerator) as well.
+
+If a hook throws an error, Dummier will raise a `Dummier::HookException` and exit immediately.
+
+
 ### Simple Example
 
 Here's a `before_migrate.rb` hook that will install [Spree Commerce](https://github.com/spree/spree) by running a generator before migrating the `test/dummy` database.
@@ -75,7 +75,7 @@ Here's a `before_migrate.rb` hook that will install [Spree Commerce](https://git
 run "rails g spree:install"
 ```
 
-    
+
 ### More Complex Example
 
 Here's an example taken from [has_magick_title](https://github.com/citrus/has_magick_title):
@@ -87,7 +87,7 @@ run "rails g scaffold post title:string"
 
 gsub_file "app/models/post.rb", "end", %(
   has_magick_title
-  
+
 end)
 
 gsub_file "config/routes.rb", "resources :posts", %(

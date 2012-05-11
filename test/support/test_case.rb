@@ -10,7 +10,7 @@ class MiniTest::Should::TestCase
     ensure
       eval("$#{stream} = #{stream.upcase}")
     end
-        
+
     result
   end
 
